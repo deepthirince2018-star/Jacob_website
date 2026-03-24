@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob Jose | Professional Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="logo">Jacob.</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#attendance">Attendance</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section" id="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm <span class="highlight">Jacob Jose</span></h1>
+            <p>A passionate student building the future, one step at a time.</p>
+            <a href="#about" class="btn">Explore My Journey</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <div class="card-container">
+            <div class="card glass-card">
+                <h3>University Education</h3>
+                <p>Currently studying at an esteemed University, building a strong foundation in my academic field with
+                    dedication and excellence.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section">
+        <h2>Academic Achievements</h2>
+        <div class="card-container">
+            <div class="card glass-card achievement-card">
+                <div class="icon">🏆</div>
+                <h3>Consistent High Scorer</h3>
+                <p>Maintained a top-tier GPA throughout consecutive academic semesters.</p>
+            </div>
+            <div class="card glass-card achievement-card">
+                <div class="icon">⭐</div>
+                <h3>Project Excellence</h3>
+                <p>Awarded outstanding student project in the annual university tech symposium.</p>
+            </div>
+            <div class="card glass-card achievement-card">
+                <div class="icon">📜</div>
+                <h3>Certifications</h3>
+                <p>Completed multiple advanced certifications relevant to modern technologies.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attendance Section -->
+    <section id="attendance" class="section">
+        <h2>Attendance Record</h2>
+        <p class="subtitle">A visual representation of my attendance over semesters.</p>
+        <div class="chart-container glass-card">
+            <canvas id="attendanceChart"></canvas>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <h2>Connect With Me</h2>
+        <p class="subtitle">I'm open to new projects and opportunities.</p>
+        <div class="contact-container glass-card">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="name" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label>Contact Number</label>
+                    <input type="tel" id="contactInfo" required placeholder="Your Contact Number">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" required placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea id="message" rows="5" required placeholder="Write your message here..."></textarea>
+                </div>
+                <button type="submit" class="btn submit-btn">Send Message</button>
+            </form>
+            <div id="formMessage" class="form-message"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Jacob Jose. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
