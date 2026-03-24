@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Wake up backend (Render sleeps on free tier)
+    fetch('https://jacob-website-tg0e.onrender.com/ping')
+        .catch(() => console.log('Backend wake-up ping sent'));
+
     // Initialize Chart.js Attendance Graph
     const ctx = document.getElementById('attendanceChart').getContext('2d');
 
@@ -65,8 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.disabled = true;
 
         try {
-            // FIXED PORT → 5000
-            const response = await fetch('http://localhost:5000/api/contact', {
+            // USE RENDER BACKEND URL
+            const response = await fetch('https://jacob-website-tg0e.onrender.com/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
