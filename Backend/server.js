@@ -2,22 +2,17 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// CORS Configuration (IMPORTANT for Vercel frontend)
+// CORS (Allow Vercel + Localhost)
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://localhost:5000', 'https://jacob-website-tg0e.onrender.com', 'https://your-vercel-domain.vercel.app'],
+    origin: '*',
     methods: ['GET', 'POST'],
-    credentials: true
 }));
 
 app.use(express.json());
-
-// Serve frontend (only for local use, not needed on Vercel but safe)
-app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI)
@@ -27,6 +22,11 @@ mongoose.connect(process.env.MONGODB_URI)
 // Test route
 app.get('/', (req, res) => {
     res.send('Server + MongoDB is working!');
+});
+
+// Ping route (keeps Render awake)
+app.get('/ping', (req, res) => {
+    res.send('Server is awake');
 });
 
 // Schema
@@ -47,7 +47,10 @@ app.post('/api/contact', async (req, res) => {
         const { name, contactInfo, email, message } = req.body;
 
         if (!name || !contactInfo || !email || !message) {
-            return res.status(400).json({ success: false, message: 'All fields are required' });
+            return res.status(400).json({
+                success: false,
+                message: 'All fields are required'
+            });
         }
 
         const newContact = new Contact({
@@ -71,11 +74,6 @@ app.post('/api/contact', async (req, res) => {
             message: 'Server error'
         });
     }
-});
-
-// Keep server alive (helps Render free tier)
-app.get('/ping', (req, res) => {
-    res.send('Server is awake');
 });
 
 // Start server
